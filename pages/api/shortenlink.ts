@@ -20,7 +20,7 @@ const db = await connectToDb();
 
 if(req.body.link){
   const entry = await db.db('links_db').collection('links_collection').insertOne({link:req.body.link});
-  return res.status(201).json({shorten_link: `http://localhost:3000/r/${entry.insertedId}`});
+  return res.status(201).json({shorten_link: `${process.env.VERCEL_URL}/r/${entry.insertedId}`});
 }
 
 
